@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 /* Importing Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 :root {
   --background: #ffffff;
@@ -21,11 +20,95 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* global.css */
+
+/* Scrollable class for handling overflow */
+.scrollable {
+  max-height: 100%; /* Ensures the height fits the parent */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Hide scrollbar by default */
+.scrollable::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+  height: 0px; /* Optional: If you want to hide horizontal scrollbar */
+  opacity: 0; /* Hide the scrollbar */
+  transition: opacity 0.2s; /* Smooth transition */
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: #888; /* Thumb color */
+  border-radius: 999px; /* Fully rounded */
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb color on hover */
+}
+
+/* Show scrollbar only when content is scrollable */
+.scrollable:has(:hover)::-webkit-scrollbar {
+  opacity: 1; /* Show the scrollbar on hover */
+}
+
+.scrollable:hover::-webkit-scrollbar {
+  opacity: 1; /* Also show the scrollbar on hover */
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px; /* Reduced size */
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000); /* Changed to white */
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
+  animation: l7 1s infinite linear;
+}
+
+@keyframes l7 {
+  33% {
+    background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%;
+  }
+  50% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;
+  }
+  66% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;
+  }
+}
+
+
+.border-element {
+  @apply relative w-48 h-48 text-5xl text-white text-center leading-[6rem] rounded-full shadow-lg;
+}
+
+.border-element:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: -1px;
+  left: -1px;
+  border: 4px dashed white;
+  z-index: 1;
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

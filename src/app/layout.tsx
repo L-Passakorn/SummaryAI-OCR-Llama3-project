@@ -3,8 +3,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'My Landing Page',
-  description: 'Welcome to my cool landing page',
+  title: 'Summary AI',
+  description: 'Welcome to Summary AI, we will summarize your images in a minute',
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
